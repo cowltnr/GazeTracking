@@ -6,6 +6,7 @@ from .eye import Eye
 from .calibration import Calibration
 
 
+
 class GazeTracking(object):
     """
     This class tracks the user's gaze.
@@ -13,18 +14,18 @@ class GazeTracking(object):
     and pupils and allows to know if the eyes are open or closed
     """
 
-    def __init__(self):
-        self.frame = None
+    def __init__(self, face_detector_path):
+        self.frame = None  # 초기값 없음
         self.eye_left = None
         self.eye_right = None
         self.calibration = Calibration()
 
         # _face_detector is used to detect faces
-        self._face_detector = dlib.get_frontal_face_detector()
+        self._face_detector = dlib.cnn_face_detection_model_v1(face_detector_path)
 
         # _predictor is used to get facial landmarks of a given face
         cwd = os.path.abspath(os.path.dirname(__file__))
-        model_path = os.path.abspath(os.path.join(cwd, "trained_models/shape_predictor_68_face_landmarks.dat"))
+        model_path = os.path.abspath(os.path.join(cwd, "trained_models/mmod_human_face_detector.dat"))
         self._predictor = dlib.shape_predictor(model_path)
 
     @property
@@ -131,3 +132,4 @@ class GazeTracking(object):
             cv2.line(frame, (x_right, y_right - 5), (x_right, y_right + 5), color)
 
         return frame
+

@@ -4,14 +4,15 @@ import cv2
 from .pupil import Pupil
 
 
+
 class Eye(object):
     """
     This class creates a new frame to isolate the eye and
     initiates the pupil detection.
     """
 
-    LEFT_EYE_POINTS = [36, 37, 38, 39, 40, 41]
-    RIGHT_EYE_POINTS = [42, 43, 44, 45, 46, 47]
+    LEFT_EYE_POINTS = [36, 37, 38, 39, 40, 41]  # 68개 landmarks 중 왼쪽 눈
+    RIGHT_EYE_POINTS = [42, 43, 44, 45, 46, 47]  # 68개 landmarks 중 오른쪽 눈
 
     def __init__(self, original_frame, landmarks, side, calibration):
         self.frame = None
@@ -23,7 +24,7 @@ class Eye(object):
         self._analyze(original_frame, landmarks, side, calibration)
 
     @staticmethod
-    def _middle_point(p1, p2):
+    def _middle_point(p1, p2):  # 동공 좌표
         """Returns the middle point (x,y) between two points
 
         Arguments:
