@@ -1,8 +1,8 @@
 ```mermaid
 graph TD;
     A[Start Camera]
-    B[Gaze Tracking Recognition]
-    C{Gaze.is_blinking > 2 seconds?}
+    B[Use Gaze Tracking to Detect Gaze]
+    C{gaze.is_blinking > 2 seconds?}
     D[Issue Warning for Drowsiness]
     E{Pupil Y-axis Change > 10?}
     F[Issue Warning for Phone Usage]
@@ -29,3 +29,4 @@ graph TD;
     J --> K
     K --> B
     K --> L
+
