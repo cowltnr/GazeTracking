@@ -29,6 +29,5 @@ graph TD;
     I -- Yes --> J
     I -- No --> B
     J --> K
-    K --> B
     K --> L
 
