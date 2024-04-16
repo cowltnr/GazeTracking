@@ -1,9 +1,30 @@
-```mermaid
 graph TD;
-    A[Start] --> B[Recognize Driver's Eyes]
-    B --> C{Inattentive > 2 seconds?}
-    C -->|Yes| D[Issue Warning Sound]
-    C -->|No| B
-    D --> E{Warning Sound Count > 3?}
-    E -->|Yes| F[Activate Emergency Blinkers]
-    E -->|No| B
+    A[Start Camera]
+    B[Gaze Tracking Recognition]
+    C{Gaze.is_blinking() > 2s?}
+    D[Issue Warning for Drowsiness]
+    E{Pupil Y-axis Change > 10?}
+    F[Issue Warning for Phone Usage]
+    G{Face Not Detected?}
+    H[Issue Warning for Side Glance]
+    I{Warning Count > 3?}
+    J[Activate Emergency Blinkers]
+    K[Continue Gaze Tracking]
+    L[Stop Gaze Tracking on Stop]
+
+    A --> B
+    B --> C
+    C -- Yes --> D
+    C -- No --> E
+    D --> I
+    E -- Yes --> F
+    E -- No --> G
+    F --> I
+    G -- Yes --> H
+    G -- No --> K
+    H --> I
+    I -- Yes --> J
+    I -- No --> K
+    J --> K
+    K --> B
+    K --> L
