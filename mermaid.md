@@ -2,7 +2,7 @@
 graph TD;
     A[Start Camera]
     B[Gaze Tracking Recognition]
-    C{Gaze.is_blinking() > 2 seconds?}
+    C{Gaze.is_blinking > 2 seconds?}
     D[Issue Warning for Drowsiness]
     E{Pupil Y-axis Change > 10?}
     F[Issue Warning for Phone Usage]
