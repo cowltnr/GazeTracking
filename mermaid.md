@@ -15,17 +15,19 @@ graph TD;
 
     A --> B
     B --> C
+    B --> E
+    B --> G
     C -- Yes --> D
-    C -- No --> E
+    C -- No --> B
     D --> I
     E -- Yes --> F
-    E -- No --> G
+    E -- No --> B
     F --> I
     G -- Yes --> H
-    G -- No --> K
+    G -- No --> B
     H --> I
     I -- Yes --> J
-    I -- No --> K
+    I -- No --> B
     J --> K
     K --> B
     K --> L
