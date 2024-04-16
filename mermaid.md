@@ -1,3 +1,4 @@
+```mermaid
 graph TD;
     A[Start Camera]
     B[Gaze Tracking Recognition]
