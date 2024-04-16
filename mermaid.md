@@ -13,6 +13,7 @@ graph TD;
     K[Continue Gaze Tracking]
     L[Stop Gaze Tracking on Stop]
 
+
     A --> B
     B --> C
     B --> E
@@ -30,4 +31,4 @@ graph TD;
     I -- No --> B
     J --> K
     K --> L
-
+    L -- No --> A
