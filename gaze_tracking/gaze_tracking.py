@@ -28,6 +28,7 @@ class GazeTracking(object):
         model_path = os.path.abspath(os.path.join(cwd, "trained_models/shape_predictor_68_face_landmarks.dat"))
         self._predictor = dlib.shape_predictor(model_path)
 
+
     @property
     def pupils_located(self):
         """Check that the pupils have been located"""
@@ -40,17 +41,32 @@ class GazeTracking(object):
         except Exception:
             return False
 
+
     def _analyze(self):
-        """Detects the face and initialize Eye objects"""
+        """Detects the face and initializes Eye objects with more robust error handling."""
         frame = cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
-        faces = self._face_detector(frame)
+        detections = self._face_detector(frame)
+
+        if not detections:
+            print("No faces detected.")
+            self.eye_left = None
+            self.eye_right = None
+            return
 
         try:
-            landmarks = self._predictor(frame, faces[0])
+            # Assuming the first detection is the user's face
+            dlib_rect = detections[0].rect  # Convert mmod_rectangle to rectangle
+            landmarks = self._predictor(frame, dlib_rect)  # Use the converted rectangle
             self.eye_left = Eye(frame, landmarks, 0, self.calibration)
             self.eye_right = Eye(frame, landmarks, 1, self.calibration)
 
-        except IndexError:
+        except IndexError as e:
+            print("IndexError in detection processing:", e)
+            self.eye_left = None
+            self.eye_right = None
+
+        except Exception as e:
+            print("An unexpected error occurred:", e)
             self.eye_left = None
             self.eye_right = None
 
