@@ -38,17 +38,19 @@ while True:
     cv2.imshow("Demo", frame)
 
 
+
     if cv2.waitKey(1) == 27:
         break
 
     input_key = input("pause : ")
 
+    file = open("C:\\Users\\user\\PycharmProjects\\Capstone2024\\GazeTracking\\tracking_result.txt", "w")
 
     if input_key == "q" or "Q" :
         print(left_pupil, right_pupil)
-    if left_pupil and right_pupil == "None" :
-        file = open('C:\\Users\\user\\PycharmProjects\\Capstone2024\\GazeTracking\\tracking_result.txt', 'w')
-        w = file.write(left_pupil, right_pupil)
+        if str(left_pupil) and str(right_pupil) == "None" :
+            file.write(str(left_pupil) + " " + str(right_pupil))
+            file.close()
 
     else :
         pass
