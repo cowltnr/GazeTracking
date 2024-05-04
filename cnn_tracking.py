@@ -10,6 +10,10 @@ detector_path = "gaze_tracking/trained_models/mmod_human_face_detector.dat"
 gaze = GazeTracking(detector_path)
 webcam = cv.VideoCapture(0, cv.CAP_DSHOW)
 
+if not webcam.isOpened():
+    print("Cannot open camera")
+    exit()
+
 while True:
     # We get a new frame from the webcam
     _, frame = webcam.read()
