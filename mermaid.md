@@ -27,7 +27,7 @@ graph TD;
     G --> B
     %% G -- Yes --> H
     %% G -- No --> B
-    H --> I
+    %% H --> I
     I -- Yes --> J
     I -- No --> B
     J --> K
