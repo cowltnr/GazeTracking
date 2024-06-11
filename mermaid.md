@@ -4,7 +4,7 @@ graph TD;
     B[Use Gaze Tracking to Detect Gaze]
     C{gaze.is_blinking > 2 seconds?}
     D[Issue Warning for Drowsiness]
-    E{Pupil Y-axis Change > 10?}
+    E{Pupil Y-axis Change > 50?}
     F[Issue Warning for Phone Usage]
     G{Face Not Detected?}
     H[Issue Warning for Side Glance]
