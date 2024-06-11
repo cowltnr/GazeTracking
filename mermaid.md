@@ -11,7 +11,7 @@ graph TD;
     I{Warning Count > 3?}
     J[Activate Emergency Blinkers]
     K[Continue Gaze Tracking]
-    L[Stop Gaze Tracking on Stop]
+    L[Stop Gaze Tracking on car Stop]
 
 
     A --> B
