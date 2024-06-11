@@ -7,7 +7,7 @@ graph TD;
     E{Pupil Y-axis Change > 50?}
     F[Issue Warning for Phone Usage]
     G{Face Not Detected?}
-    H[Issue Warning for Side Glance]
+    # H[Issue Warning for Side Glance]
     I{Warning Count > 3?}
     J[Activate Emergency Blinkers]
     K[Continue Gaze Tracking]
@@ -24,8 +24,9 @@ graph TD;
     E -- Yes --> F
     E -- No --> B
     F --> I
-    G -- Yes --> H
-    G -- No --> B
+    G --> B
+    #G -- Yes --> H
+    #G -- No --> B
     H --> I
     I -- Yes --> J
     I -- No --> B
